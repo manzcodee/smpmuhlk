@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RahmanAi Web Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; font-family: sans-serif; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 10px; }
+        :root {
+    --primary: #006d34; /* Muhammadiyah Green */
+    --secondary: #fcd34d; /* Accent Gold */
+    --dark: #1f2937;
+    --light: #f3f4f6;
+    --white: #ffffff;
+    --text-gray: #6b7280;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Navigation */
+.navbar {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--dark);
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary);
+}
+
+.ppdb-btn {
+    background-color: var(--primary);
+    color: var(--white) !important;
+    padding: 8px 20px;
+    border-radius: 20px;
+    transition: background 0.3s;
+}
+
+.ppdb-btn:hover {
+    background-color: #005026;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark);
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('IMG1') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+.hero-overlay {
+    background: rgba(0, 50, 20, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    color: var(--light);
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: var(--primary);
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Section Standard */
+.section {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--light);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--secondary);
+    margin: 10px auto 0;
+}
+
+.section-desc {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: -30px;
+    color: var(--text-gray);
+}
+
+/* Profil Grid */
+.profil-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.profil-img img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.feature-list {
+    margin-top: 20px;
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.feature-list i {
+    color: var(--primary);
+}
+
+/* Guru Grid */
+.guru-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.guru-card {
+    background: var(--white);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.guru-card:hover {
+    transform: translateY(-5px);
+}
+
+.guru-img-wrapper {
+    height: 250px;
+    overflow: hidden;
+}
+
+.guru-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.guru-info {
+    padding: 20px;
+}
+
+.guru-info h4 {
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+/* Galeri Grid */
+.galeri-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.galeri-item {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.galeri-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.galeri-item:hover img {
+    transform: scale(1.1);
+}
+
+/* PPDB Section */
+.ppdb-section {
+    background: linear-gradient(rgba(0,109,52,0.9), rgba(0,109,52,0.9)), url('IMG1');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.text-white {
+    color: var(--white);
+}
+
+.ppdb-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.ppdb-cta-main {
+    background: var(--secondary);
+    color: var(--primary);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.ppdb-cta-sec {
+    background: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+/* Location & Contact */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.map-container iframe {
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.contact-info h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-media {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.social-media h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.soc-link {
+    width: 40px;
+    height: 40px;
+    background: var(--light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.soc-link.fb:hover { background: #1877F2; color: white; }
+.soc-link.ig:hover { background: #E1306C; color: white; }
+.soc-link.yt:hover { background: #FF0000; color: white; }
+.soc-link.tk:hover { background: #000000; color: white; }
+
+/* Footer */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
+
+/* ANIMATIONS */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--white);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 16px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .profil-grid, .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP MUHAMMADIYAH LOA KULU</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="https://i.ibb.co.com/kVtbLHJ4/download.jpg" alt="Logo SMP Muhammadiyah Loa Kulu">
+                <span>SMP Mulk</span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#beranda" class="nav-link">Beranda</a></li>
+                <li><a href="#profil" class="nav-link">Profil Sekolah</a></li>
+                <li><a href="#guru" class="nav-link">Guru</a></li>
+                <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                <li><a href="#ppdb" class="nav-link ppdb-btn">PPDB</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="hero-overlay">
+            <div class="container hero-content animate-on-scroll">
+                <h1>Selamat Datang di<br>SMP MUHAMMADIYAH LOA KULU</h1>
+                <p>Mewujudkan Generasi Islami, Berprestasi, dan Berkemajuan.</p>
+                <a href="#ppdb" class="cta-button">Daftar Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Profil Sekolah</h2>
+            <div class="profil-grid">
+                <div class="profil-img animate-on-scroll">
+                    <!-- Foto Gedung Sekolah -->
+                    <img src="https://i.ibb.co.com/q3Qsc7ft/Screenshot-2026-01-19-14-32-03.png" alt="Gedung Sekolah">
+                </div>
+                <div class="profil-text animate-on-scroll">
+                    <h3>Visi & Misi</h3>
+                    <p>SMP MUHAMMADIYAH LOA KULU berkomitmen untuk memberikan pendidikan berkualitas yang memadukan nilai-nilai keislaman dan ilmu pengetahuan umum. Kami bertekad mencetak kader umat yang unggul dalam akhlak dan intelektual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guru Section -->
+    <section id="guru" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Tenaga Pendidik</h2>
+            <p class="section-desc animate-on-scroll">Guru-guru berdedikasi dan profesional di bidangnya.</p>
+            <div class="guru-grid">
+                <!-- Card 1: Kepala Sekolah -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/KjWps3TZ/Whats-App-Image-2026-01-14-at-14-44-36.jpg" alt="MOCH. ARIFIN, M.Pd">
+                    </div>
+                    <div class="guru-info">
+                        <h4>MOCH. ARIFIN, M.Pd</h4>
+                        <p>PLT. KEPALA SEKOLAH</p>
+                    </div>
+                </div>
+                <!-- Card 2: Operator -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/DHPtwyL5/Whats-App-Image-2026-01-19-at-15-08-17.jpg" alt="RENI HANDAYANI, S.Pd">
+                    </div>
+                    <div class="guru-info">
+                        <h4>RENI HANDAYANI, S.Pd</h4>
+                        <p>OPERATOR SEKOLAH</p>
+                    </div>
+                </div>
+                <!-- Card 3: Ardiana -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/4wGhhk6r/Whats-App-Image-2026-01-14-at-14-44-36-1.jpg" alt="ARDIANA, S.Pd">
+                    </div>
+                    <div class="guru-info">
+                        <h4>ARDIANA, S.Pd</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+                <!-- Card 4: Dwi Fitria Lestari -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/hJpMMQk1/Whats-App-Image-2026-01-14-at-14-44-37.jpg" alt="DWI FITRIA LESTARI">
+                    </div>
+                    <div class="guru-info">
+                        <h4>DWI FITRIA LESTARI</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+                <!-- Card 5: Evtil Kartini -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/35nrvrng/Whats-App-Image-2026-01-14-at-14-44-37.jpg" alt="EVTIL KARTINI">
+                    </div>
+                    <div class="guru-info">
+                        <h4>EVTIL KARTINI</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+                <!-- Card 6: Kartika Ahdayani -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/JwYSd5pV/Whats-App-Image-2026-01-14-at-14-44-38.jpg" alt="KARTIKA AHDAYANI">
+                    </div>
+                    <div class="guru-info">
+                        <h4>KARTIKA AHDAYANI</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+                <!-- Card 7: Nurbayah -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/Kc3G4xDm/Whats-App-Image-2026-01-14-at-14-44-38-1.jpg" alt="NURBAYAH">
+                    </div>
+                    <div class="guru-info">
+                        <h4>NURBAYAH</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+                <!-- Card 8: Nurhayati -->
+                <div class="guru-card animate-on-scroll">
+                    <div class="guru-img-wrapper">
+                        <img src="https://i.ibb.co.com/x8BTqbZC/Whats-App-Image-2026-01-14-at-14-48-49.jpg" alt="NURHAYATI">
+                    </div>
+                    <div class="guru-info">
+                        <h4>NURHAYATI</h4>
+                        <p>GURU</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Section -->
+    <section id="galeri" class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Galeri Kegiatan</h2>
+            <div class="galeri-grid">
+                <div class="galeri-item animate-on-scroll">
+                    <img src="https://i.ibb.co.com/MksMp5fQ/Whats-App-Image-2026-01-14-at-14-13-38.jpg" alt="Kegiatan Siswa 1">
+                </div>
+                <div class="galeri-item animate-on-scroll">
+                    <img src="https://i.ibb.co.com/Xwftt0H/Whats-App-Image-2026-01-14-at-14-13-59.jpg" alt="Kegiatan Siswa 2">
+                </div>
+                <div class="galeri-item animate-on-scroll">
+                    <img src="https://i.ibb.co.com/yBZPKVx0/Whats-App-Image-2026-01-14-at-14-13-44.jpg" alt="Kegiatan Siswa 3">
+                </div>
+                <div class="galeri-item animate-on-scroll">
+                    <img src="https://i.ibb.co.com/Lf50qTn/Whats-App-Image-2026-01-14-at-14-13-37.jpg" alt="Kegiatan Siswa 4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PPDB Section -->
+    <section id="ppdb" class="section ppdb-section">
+        <div class="container animate-on-scroll">
+            <h2 class="section-title text-white">Penerimaan Peserta Didik Baru</h2>
+            <p class="text-white">Ada formulir pendaftaran siswa baru, bisa langsung isi formulir atau langsung chat panitia untuk informasi lebih lanjut.</p>
+            <div class="ppdb-actions">
+                <a href="https://wa.me/6283854060950" target="_blank" class="ppdb-cta-main"><i class="fab fa-whatsapp"></i> Chat Panitia</a>
+                <a href="#" class="ppdb-cta-sec">Isi Formulir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="lokasi" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Lokasi & Kontak</h2>
+            <div class="contact-grid">
+                <div class="map-container animate-on-scroll">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.664478335017!2d117.027000!3d-0.503000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df6866d660021c1%3A0x6e3c3b4000000000!2sSMP%20Muhammadiyah%20Loa%20Kulu!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="contact-info animate-on-scroll">
+                    <h3>Alamat Kami</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Muhammadiyah, Loa Kulu Kota, Kec. Loa Kulu, Kabupaten Kutai Kartanegara, Kalimantan Timur 75571</p>
+                    
+                    <div class="social-media">
+                        <h4>Ikuti Sosial Media Kami</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/share/1AhtpkdXS5/" target="_blank" class="soc-link fb"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/smp_mulk/" target="_blank" class="soc-link ig"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/@SMPMuhammadiyahLoaKulu" target="_blank" class="soc-link yt"><i class="fab fa-youtube"></i></a>
+                            <a href="https://www.tiktok.com/@smp_mulk?is_from_webapp=1&sender_device=pc" target="_blank" class="soc-link tk"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> SMP MUHAMMADIYAH LOA KULU. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+    // Set current year automatically
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Mobile Menu Toggle
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    if(mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // Smooth Scrolling for Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Offset for fixed header
+                const headerOffset = 70;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+        } else {
+            navbar.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        }
+    });
+
+    // ANIMATION ON SCROLL (IntersectionObserver)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target); // Run animation only once
+            }
+        });
+    }, observerOptions);
+
+    const scrollElements = document.querySelectorAll('.animate-on-scroll');
+    scrollElements.forEach(el => observer.observe(el));
+});</script>
+</body>
+</html>
